@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Coin/Coin.gd" type="Script" id=1]
+[ext_resource path="res://Assets/coin.png" type="Texture" id=2]
+
+[node name="Coin" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+polygon = PoolVector2Array( 25, -63.3, 37, -58.3, 37, -57, 50, -47, 50, -44.8, 60, -33.8, 60, -31.6, 64, -24.2, 64, 24.1, 62.6, 30, 61.1, 30, 51.1, 46, 49.8, 46, 38.8, 57, 36.5, 57, 24.1, 64, -24.5, 64, -40, 56.2, -40, 54.9, -52, 44.9, -52, 42.8, -59, 35.8, -59, 33.5, -64, 24.2, -64, -23, -59.4, -35, -58, -35, -45, -52, -42.8, -52, -35.8, -59, -33.3, -59, -21.7, -64, 25, -64 )
+[connection signal="body_entered" from="." to="." method="_on_Coin_body_entered"]

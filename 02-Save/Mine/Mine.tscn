@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/mine_01.png" type="Texture" id=1]
+[ext_resource path="res://Assets/mine_02.png" type="Texture" id=2]
+[ext_resource path="res://Assets/mine_03.png" type="Texture" id=3]
+[ext_resource path="res://Mine/Mine.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Mine" type="Area2D"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 1 )
+frame = 2
+playing = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, -29, -29, 28, 28.5, 26.5 )
+[connection signal="body_entered" from="." to="." method="_on_Mine_body_entered"]
